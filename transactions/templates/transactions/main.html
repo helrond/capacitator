@@ -1,0 +1,58 @@
+{% extends "transactions/base.html" %}
+
+{% block h1_title %}
+  Capacitator
+{% endblock %}
+
+{% block content %}
+<div id="app">
+<template>
+  <div class="row">
+    <div class="col-4">
+      <h3>Saved</h3><span class="badge badge-secondary">[[ queue.size ]] cubic feet</span>
+      <draggable class="list-group queue" :list="queue.items" group="people" @change="updateSize" :move="checkSize">
+        <div
+          class="list-group-item"
+          v-for="(element, index) in queue.items"
+          :key="element.name"
+        >
+           [[element.title]]  <span class="badge badge-secondary">[[index]]</span>
+           <span>[[ (element.height * element.width * element.depth / 1728).toFixed(2) ]]</span>
+        </div>
+      </draggable>
+    </div>
+
+    <div class="col-4">
+      <h3>On Cart</h3><span class="badge badge-secondary">[[ cart.size ]] / 2 cubic feet</span>
+      <draggable class="list-group cart" :list="cart.items" group="people" @change="updateSize" :move="checkSize">
+        <div
+          class="list-group-item"
+          v-for="(element, index) in cart.items"
+          :key="element.name"
+        >
+          [[element.title]] <span class="badge badge-secondary">[[index]]</span>
+          <span>[[ (element.height * element.width * element.depth / 1728).toFixed(2) ]]</span>
+        </div>
+      </draggable>
+    </div>
+    <div class="col-4">
+      <h3>To Return</h3><span class="badge badge-secondary">[[ returns.size ]] cubic feet</span>
+      <draggable class="list-group returns" :list="returns.items" group="people" @change="updateSize" :move="checkSize">
+        <div
+          class="list-group-item"
+          v-for="(element, index) in returns.items"
+          :key="element.name"
+        >
+          [[element.title]] <span class="badge badge-secondary">[[index]]</span>
+          <span>[[ (element.height * element.width * element.depth / 1728).toFixed(2) ]]</span>
+        </div>
+      </draggable>
+    </div>
+  </div>
+</template>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+{% endblock %}

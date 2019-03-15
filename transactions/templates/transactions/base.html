@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% include 'transactions/head.html' %}
+    {% block extra_css %}{% endblock %}
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Content Wrapper. Contains page content -->
+      <div class="row">
+        <!-- Content Header (Page header) -->
+        <section class="col-12 text-center">
+          <h1 class="display-4">{% block h1_title %}{% endblock %}</h1>
+        </section>
+        <!-- Main content -->
+        <section class="content col-10 offset-1">
+        {% block content %}{% endblock %}
+        </section>
+      </div>
+
+      <!-- REQUIRED JS SCRIPTS -->
+      {% include 'transactions/scripts.html' %}
+      {% block extra_js %}{% endblock %}
+
+    </div>
+  </body>
+</html>
